@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Место</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/header-logo.svg" alt="Логотип">
+  </header>
+
+  <main class="content">
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__photo" src="./images/profile-kusto.jpg"
+          alt="фото Жака-Ива Кусто извесного исследователя океана">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <p class="profile__subtitle">Исследователь океана</p>
+        <button class="profile__edit-button" type="button"></button>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
+
+    <section class="elements">
+      <ul class="elements__list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup" id="popupProfile">
+    <div class="popup__container">
+      <button class="popup__close" type="button" id="profileClose"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="profile">
+        <input class="popup__item" type="text" name="name" id="name">
+        <input class="popup__item" type="text" name="about" id="about">
+        <button class="popup__button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup" id="popupelements">
+    <div class="popup__container">
+      <button class="popup__close" type="button" id="elementsClose"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="place" id="elementsForm">
+        <input class="popup__item" type="text" name="imageTitle" id="imageTitle" placeholder="Название">
+        <input class="popup__item" type="text" name="imageLink" id="imageLink" placeholder="Ссылка на картинку">
+        <button class="popup__button" type="submit" id="addButton">
+          Создать
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_image" id="imagePopup">
+    <div class="popup__image-container">
+      <img class="popup__picture" src="" alt="">
+      <p class="popup__text"></p>
+      <button class="popup__close" type="button" id="imageClose"></button>
+    </div>
+  </div>
+
+  <template id="elementsTemplate">
+    <li class="elements__item" id="elementsItem">
+      <img class="elements__image" src="" alt="" id="elementsImage">
+      <div class="elements__container">
+        <h2 class="elements__title" id="elementsTitle"></h2>
+        <button class="elements__like" type="button"></button>
+      </div>
+      <button class="elements__delete-button" type="button" id="delButton"></button>
+    </li>
+  </template>
+
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>
