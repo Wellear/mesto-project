@@ -1,3 +1,4 @@
+
 const profilePopup = document.querySelector('#popupProfile');
 const elementsPopup = document.querySelector('#popupelements');
 const imagePopup = document.querySelector('#imagePopup');
@@ -116,9 +117,13 @@ elementsCloseButton.addEventListener('click', function () {
   clearForm(elementsForm);
   closePopup(elementsPopup);
 });
-profileForm.addEventListener('submit', function () {
+profileForm.addEventListener('submit', submitFormHandler);
+function submitFormHandler(evt) {
+  evt.preventDefault();
+  profileTitle.textContent = nameInput.value;
+  profileAbout.textContent = aboutInput.value;
   closePopup(popupProfile)
-});
+};
 initialCards.forEach(function (item) {
   elementsContainer.prepend(createCard(item.name, item.link))
 });
