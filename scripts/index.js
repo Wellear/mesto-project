@@ -117,13 +117,13 @@ elementsCloseButton.addEventListener('click', function () {
   clearForm(elementsForm);
   closePopup(elementsPopup);
 });
-profileForm.addEventListener('submit', submitFormHandler);
-function submitFormHandler(evt) {
+profileForm.addEventListener('submit', submitFormHandler); //Благодарю
+ (function submitFormHandler(evt){
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
   closePopup(popupProfile)
-};
+});
 initialCards.forEach(function (item) {
   elementsContainer.prepend(createCard(item.name, item.link))
 });
