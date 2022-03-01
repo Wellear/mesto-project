@@ -70,7 +70,7 @@ function clearForm(formId) {
 }
 
 
-function addCard(name, link) {
+function createCard(name, link) {
   const elementsElement = elementsTemplate.cloneNode(true);
   const elementsImage = elementsElement.querySelector('#elementsImage');
   elementsElement.querySelector('#elementsTitle').textContent = name;
@@ -96,7 +96,7 @@ function addCard(name, link) {
 }
 elementsPopup.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  elementsContainer.prepend(addCard(cardTitle.value, cardLink.value));
+  elementsContainer.prepend(createCard(cardTitle.value, cardLink.value));
 
   clearForm(elementsForm)
 
@@ -117,12 +117,11 @@ elementsCloseButton.addEventListener('click', function () {
   clearForm(elementsForm);
   closePopup(elementsPopup);
 });
-profileForm.addEventListener('submit', submitFormHandler);
-profileForm.addEventListener('submit', function () {
+profileForm.addEventListener('submit', submitFormHandler,function () { 
   closePopup(popupProfile)
 });
 initialCards.forEach(function (item) {
-  elementsContainer.prepend(addCard(item.name, item.link))
+  elementsContainer.prepend(createCard(item.name, item.link))
 });
 imageCloseButton.addEventListener('click', function () {
   closePopup(imagePopup)
