@@ -54,10 +54,11 @@ function closePopup(popupId) {
   popupId.classList.remove('popup_opened');
 };
 
-function submitFormHandler(evt) {
+function submitFormHandler(evt){
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileAbout.textContent = aboutInput.value;
+  closePopup(popupProfile)
 }
 
 function actualizationForm() {
@@ -118,12 +119,7 @@ elementsCloseButton.addEventListener('click', function () {
   closePopup(elementsPopup);
 });
 profileForm.addEventListener('submit', submitFormHandler); //Благодарю
- (function submitFormHandler(evt){
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileAbout.textContent = aboutInput.value;
-  closePopup(popupProfile)
-});
+;
 initialCards.forEach(function (item) {
   elementsContainer.prepend(createCard(item.name, item.link))
 });
