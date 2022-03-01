@@ -1,4 +1,3 @@
-
 const profilePopup = document.querySelector('#popupProfile');
 const elementsPopup = document.querySelector('#popupelements');
 const imagePopup = document.querySelector('#imagePopup');
@@ -117,10 +116,10 @@ elementsCloseButton.addEventListener('click', function () {
   clearForm(elementsForm);
   closePopup(elementsPopup);
 });
-
-profileForm.addEventListener('submit', submitFormHandler,function () {closePopup}); /*?*/
-
-initialCards.forEach(function (item) { 
+profileForm.addEventListener('submit', function () {
+  closePopup(popupProfile)
+});
+initialCards.forEach(function (item) {
   elementsContainer.prepend(createCard(item.name, item.link))
 });
 imageCloseButton.addEventListener('click', function () {
