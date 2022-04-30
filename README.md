@@ -19,4 +19,4 @@
 
 ## URL:
 
-https://wellear.github.io/mesto-project/
+https://wellea.github.io/mesto-project/
