@@ -2,11 +2,12 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: 'development',
     entry:{
-        main:'./src/index.js'},
+        main:'./src/components/index.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js',
@@ -14,14 +15,20 @@ module.exports = {
         
     },
 devServer:{
-    port: 4200
+  static: path.resolve(__dirname, './dist'),
+  open: true,
+  compress: true,
+    port: 6060
 },
 plugins:[
 new HtmlWebpackPlugin({
     template:'./src/index.html'
 }),
 new CleanWebpackPlugin(),
-new MiniCssExtractPlugin()
+new MiniCssExtractPlugin(),
+new CopyWebpackPlugin({
+    patterns: [{ from: "./images", to: "images" }],
+  }),
 ],
 module:{
     rules: [
