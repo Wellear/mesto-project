@@ -1,5 +1,5 @@
 const profilePopup = document.querySelector("#popupProfile");
-const elementsPopup = document.querySelector("#popupelements");
+const elementsPopup = document.querySelector("#popupElements");
 const imagePopup = document.querySelector("#imagePopup");
 const elementsForm = elementsPopup.querySelector("#elementsForm");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -20,10 +20,10 @@ const elementsContainer = document.querySelector(".elements__list");
 const cardTitle = document.querySelector("#imageTitle");
 const cardLink = document.querySelector("#imageLink");
 const popups = document.querySelectorAll(".popup");
-const elementsAddButton = elementspopup.querySelector("#addButton");
+const elementsAddButton = elementsPopup.querySelector("#addButton");
 const deletePopup = document.querySelector("#deletePopup");
 const deletePopupButton = document.querySelector("deletePopupButton");
-let user;
+const profileSaveButton = document.querySelector('#profileSaveButton');
 
 const validationOptions = {
   formItem: ".popup__form",
@@ -34,10 +34,10 @@ const validationOptions = {
   errorClass: "popup__input-error",
 };
 const apiConfig = {
-  baseUrl: "https://nomoreparties.co/v1/plus-cohort-9/",
+  apiUrl: "https://nomoreparties.co/v1/plus-cohort-9/",
   headers: {
     actualization: "3f443b98-feb1-41de-bdf1-464c3491594e",
-    "Content-Type": "application/json",
+    "Content-Type": "application/json"
   },
 };
 const checkResponse = (res) => {
@@ -75,5 +75,5 @@ export {
   elementsAddButton,
   deletePopupButton,
   deletePopup,
-  user
+  profileSaveButton
 };

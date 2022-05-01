@@ -1,4 +1,5 @@
 import { apiConfig, checkResponse } from "./consts";
+
 const getProfileData = () => {
   return fetch(`${apiConfig.apiUrl}users/me`, {
     headers: apiConfig.headers,

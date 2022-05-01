@@ -1,5 +1,5 @@
 import { postNewCard, deleteCard, addLike, removeLike } from "./api";
-import { user } from "./consts";
+import { user } from "./index";
 import {
   elementsPopup,
   imagePopup,
@@ -14,13 +14,13 @@ import {
   deletePopup,
 } from "./consts";
 import { openPopup, closePopup } from "./modal";
-import { clearForm, disableButton } from "./index";
+import {clearForm,disableButton} from "./utils";
 
 function newCard(item) {
   elementsContainer.prepend(item);
 }
 
-function createCard(cardData, userData) {
+function addCard(cardData, userData) {
   const elementsElement = elementsTemplate.cloneNode(true);
   const elementsImage = elementsElement.querySelector("#elementsImage");
   const elementsDeleteButton = elementsElement.querySelector(
@@ -130,7 +130,7 @@ function likeSwitch(evt, cardData, likeCounter) {
 }
 export {
   newCard,
-  createCard,
+  addCard,
   likeToggle,
   likeSwitch,
   removeCard,
