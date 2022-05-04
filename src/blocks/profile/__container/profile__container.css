@@ -1,7 +1,7 @@
 .profile__container {
   display: grid;
-  grid-template-columns: 27% 56% 17%;
-  grid-template-rows: 60% 40%;
+  grid-template-columns: .6fr 1.3fr 1fr;
+  grid-template-rows: 1fr .8fr;
 }
 
 @media (max-width: 768px) {

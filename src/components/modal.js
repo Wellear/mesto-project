@@ -1,5 +1,4 @@
-
-import { disableButton } from "./utils";
+import { disableButton, clearForm } from "./utils";
 import {
   profileTitle,
   profileAbout,
@@ -7,77 +6,74 @@ import {
   aboutInput,
   profileSaveButton,
   profilePopup,
+  profileAvatar,
+  avatarSaveButton,
+  avatarLink,
+  avatarForm,
 } from "./consts";
+import { updateProfileData, changeAvatar } from "./api";
+
 function submitProfileForm(evt) {
-  evt.preventDefault()
-  profileSaveButton.textContent = 'Сохранение...'
-  profileTitle.textContent = 'Загрузка...';
-  profileAbout.textContent = 'Подождите...';
+  evt.preventDefault();
+  profileSaveButton.textContent = "Сохранение...";
+  profileTitle.textContent = "Загрузка...";
+  profileAbout.textContent = "Подождите...";
   const data = {
     name: nameInput.value,
-    about: aboutInput.value
-  }
+    about: aboutInput.value,
+  };
   updateProfileData(data)
-    .then(res => {
+    .then((res) => {
       profileTitle.textContent = res.name;
       profileAbout.textContent = res.about;
-      closePopup(profilePopup)
-      disableButton(profileSaveButton)
+      closePopup(profilePopup);
+      disableButton(profileSaveButton);
     })
-    .catch(err => console.log(err))
-    .finally(() => profileSaveButton.textContent = 'Сохранить')
+    .catch((err) => console.log(err))
+    .finally(() => (profileSaveButton.textContent = "Сохранить"));
 }
 
-function updateProfile (name, about) {
-  profileTitle.textContent = name
-  profileAbout.textContent = about
+function updateProfile(avatar, name, about) {
+  profileAvatar.src = avatar;
+  profileTitle.textContent = name;
+  profileAbout.textContent = about;
+}
+function submitProfileAvatar(evt) {
+  evt.preventDefault();
+  avatarSaveButton.textContent = "Сохранение...";
+  changeAvatar(avatarLink.value)
+    .then((res) => {
+      profileAvatar.src = res.avatar;
+      clearForm(avatarForm);
+      closePopup(popupAvatar);
+      disableButton(avatarSaveButton);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => (avatarSaveButton.textContent = "Сохранить"));
 }
 
-function fillProfileInputs() {
-  nameInput.value = profileTitle.textContent;
-  aboutInput.value = profileAbout.textContent;
+function closeEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
 }
 
 function openPopup(popupId) {
   popupId.classList.add("popup_opened");
+  document.addEventListener("keydown", closeEsc);
 }
 
 function closePopup(popupId) {
   popupId.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeEsc);
 }
-document.addEventListener("click", (e) => {
-  if (e.target === profilePopup) {
-    profilePopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("click", (e) => {
-  if (e.target === elementsPopup) {
-    elementsPopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("click", (e) => {
-  if (e.target === imagePopup) {
-    imagePopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("click", (e) => {
-  if (e.key === imagePopup) {
-    imagePopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) {
-    imagePopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) {
-    elementsPopup.classList.remove("popup_opened");
-  }
-});
-document.addEventListener("keydown", (e) => {
-  if (e.keyCode === 27) {
-    profilePopup.classList.remove("popup_opened");
-  }
-});
-export { openPopup, closePopup,fillProfileInputs, updateProfile, submitProfileForm  };
+
+export {
+  openPopup,
+  closePopup,
+  updateProfile,
+  submitProfileForm,
+  closeEsc,
+  submitProfileAvatar,
+};
