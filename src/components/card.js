@@ -14,13 +14,13 @@ import {
   deletePopup,
 } from "./consts";
 import { openPopup, closePopup } from "./modal";
-import {clearForm,disableButton} from "./utils";
+import { clearForm, disableButton } from "./utils";
 
 function newCard(item) {
   elementsContainer.prepend(item);
 }
 
-function addCard(cardData, userData) {
+function createCard(cardData, userData) {
   const elementsElement = elementsTemplate.cloneNode(true);
   const elementsImage = elementsElement.querySelector("#elementsImage");
   const elementsDeleteButton = elementsElement.querySelector(
@@ -67,20 +67,20 @@ function removeCard(evt) {
 
 function checkCardOwner(cardData, userData, elementsDeleteButton) {
   if (cardData.owner._id !== userData._id) {
-    elementsDeleteButton.classList.add("elements__delete-button_hidden");
+    elementsDeleteButton.classList.add("elements__delete-button_hide");
   }
 }
 
 function submitCardForm(evt) {
   evt.preventDefault();
-  elementsAddButton.textContent = "Подождите...";
+  elementsAddButton.textContent = "Загрузка...";
   const cardData = {
     name: cardTitle.value,
     link: cardLink.value,
   };
   postNewCard(cardData)
     .then((res) => {
-      elementsContainer.prepend(addCard(res, user));
+      elementsContainer.prepend(createCard(res, user));
       clearForm(elementsForm);
       closePopup(elementsPopup);
       disableButton(elementsAddButton);
@@ -130,7 +130,7 @@ function likeSwitch(evt, cardData, likeCounter) {
 }
 export {
   newCard,
-  addCard,
+  createCard,
   likeToggle,
   likeSwitch,
   removeCard,

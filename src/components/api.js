@@ -48,7 +48,16 @@ const updateProfileData = (data) => {
     }),
   }).then(checkResponse);
 };
+const changeAvatar = (url) => {
+  return fetch(`${apiConfig.apiUrl}users/me/avatar`, {
+    method: 'PATCH',
+    headers: apiConfig.headers,
+    body: JSON.stringify({ avatar: url })
+  })
+    .then(checkResponse)
+}
 export {
+  changeAvatar,
   getProfileData,
   getCadrsData,
   updateProfileData,

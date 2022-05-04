@@ -1,3 +1,11 @@
+const avatarPopup = document.querySelector("#popupAvatar");
+const profileAvatar = document.querySelector(".profile__photo");
+const profileAvatarButton = document.querySelector(
+  ".profile__photo-edit-button"
+);
+const avatarSaveButton = document.querySelector("#avatarSaveButton");
+const avatarLink = document.querySelector("#avatarLink");
+const avatarForm = document.querySelector("#avatarForm");
 const profilePopup = document.querySelector("#popupProfile");
 const elementsPopup = document.querySelector("#popupElements");
 const imagePopup = document.querySelector("#imagePopup");
@@ -5,8 +13,6 @@ const elementsForm = elementsPopup.querySelector("#elementsForm");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const elementsEditButton = document.querySelector(".profile__add-button");
 const elementsImage = document.querySelector("elements__image");
-const profileCloseButton = profilePopup.querySelector("#profileClose");
-const elementsCloseButton = elementsPopup.querySelector("#elementsClose");
 const imageCloseButton = imagePopup.querySelector("#imageClose");
 const profileTitle = document.querySelector(".profile__title");
 const profileAbout = document.querySelector(".profile__subtitle");
@@ -23,21 +29,21 @@ const popups = document.querySelectorAll(".popup");
 const elementsAddButton = elementsPopup.querySelector("#addButton");
 const deletePopup = document.querySelector("#deletePopup");
 const deletePopupButton = document.querySelector("deletePopupButton");
-const profileSaveButton = document.querySelector('#profileSaveButton');
+const profileSaveButton = document.querySelector("#profileSaveButton");
 
 const validationOptions = {
   formItem: ".popup__form",
   inputItem: ".popup__item",
   buttons: ".popup__button",
-  inactiveButtons: "popup__button_inactive",
+  inactiveButtonClass: "popup__button_inactive",
   inputErrorClass: "popup__item-error",
   errorClass: "popup__input-error",
 };
 const apiConfig = {
   apiUrl: "https://nomoreparties.co/v1/plus-cohort-9/",
   headers: {
-    actualization: "3f443b98-feb1-41de-bdf1-464c3491594e",
-    "Content-Type": "application/json"
+    authorization: "3f443b98-feb1-41de-bdf1-464c3491594e",
+    "Content-Type": "application/json",
   },
 };
 const checkResponse = (res) => {
@@ -69,11 +75,15 @@ export {
   apiConfig,
   checkResponse,
   elementsImage,
-  profileCloseButton,
-  elementsCloseButton,
   imageCloseButton,
   elementsAddButton,
   deletePopupButton,
   deletePopup,
-  profileSaveButton
+  profileSaveButton,
+  profileAvatar,
+  profileAvatarButton,
+  avatarPopup,
+  avatarSaveButton,
+  avatarLink,
+  avatarForm,
 };
