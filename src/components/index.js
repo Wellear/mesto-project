@@ -1,12 +1,6 @@
 import "../pages/index.css";
-import { createCard, newCard, submitCardForm, deleteCardAccept } from "./card";
-import {
-  openPopup,
-  closePopup,
-  updateProfile,
-  submitProfileForm,
-  submitProfileAvatar,
-} from "./modal";
+import { createCard } from "./card";
+import { openPopup, closePopup } from "./modal";
 import { enableValidation } from "./validate";
 import {
   profilePopup,
@@ -15,46 +9,51 @@ import {
   elementsEditButton,
   profileForm,
   validationOptions,
-  popups,
-  profileAvatarButton,
-  avatarPopup,
-  avatarForm,
+  imagePopup,
+  elementsForm,
+  profileCloseButton,
+  elementsCloseButton,
+  imageCloseButton,
+  elementsContainer,
+  cardTitle,
+  cardLink,
 } from "./consts";
-import { getProfileData, getCadrsData } from "./api";
-
-Promise.all([getCadrsData(), getProfileData()])
-  .then(([cards, userData]) => {
-    cards.forEach((card) => {
-      newCard(createCard(card, userData));
-    });
-    updateProfile(userData.avatar, userData.name, userData.about);
-    user = userData;
-  })
-  .catch((err) => console.log(err));
-popups.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains("popup__close")) {
-      closePopup(popup);
-    }
-  });
-});
-deletePopupButton.addEventListener("click", deleteCardAccept);
+import { submitProfileForm, actualizationForm, clearForm } from "./utils";
 
 profileEditButton.addEventListener("click", function () {
+  actualizationForm();
   openPopup(profilePopup);
 });
-profileAvatarButton.addEventListener("click", function () {
-  openPopup(avatarPopup);
+profileCloseButton.addEventListener("click", function () {
+  closePopup(profilePopup);
 });
 elementsEditButton.addEventListener("click", function () {
   openPopup(elementsPopup);
 });
-avatarForm.addEventListener("submit", submitProfileAvatar);
+
+elementsCloseButton.addEventListener("click", function () {
+  clearForm(elementsForm);
+  closePopup(elementsPopup);
+});
+
 profileForm.addEventListener("submit", submitProfileForm);
-elementsPopup.addEventListener("submit", submitCardForm);
+
+profileForm.addEventListener("submit", function () {
+  closePopup(popupProfile);
+});
+
+imageCloseButton.addEventListener("click", function () {
+  closePopup(imagePopup);
+});
+
+elementsPopup.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  elementsContainer.prepend(createCard(cardTitle.value, cardLink.value));
+
+  clearForm(elementsForm);
+
+  closePopup(elementsPopup);
+});
 
 enableValidation(validationOptions);
 export let user;

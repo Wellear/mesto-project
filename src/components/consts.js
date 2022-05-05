@@ -1,18 +1,11 @@
-const avatarPopup = document.querySelector("#popupAvatar");
-const profileAvatar = document.querySelector(".profile__photo");
-const profileAvatarButton = document.querySelector(
-  ".profile__photo-edit-button"
-);
-const avatarSaveButton = document.querySelector("#avatarSaveButton");
-const avatarLink = document.querySelector("#avatarLink");
-const avatarForm = document.querySelector("#avatarForm");
+
 const profilePopup = document.querySelector("#popupProfile");
 const elementsPopup = document.querySelector("#popupElements");
 const imagePopup = document.querySelector("#imagePopup");
 const elementsForm = elementsPopup.querySelector("#elementsForm");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const elementsEditButton = document.querySelector(".profile__add-button");
-const elementsImage = document.querySelector("elements__image");
+const profileCloseButton = profilePopup.querySelector('#profileClose');
 const imageCloseButton = imagePopup.querySelector("#imageClose");
 const profileTitle = document.querySelector(".profile__title");
 const profileAbout = document.querySelector(".profile__subtitle");
@@ -25,11 +18,7 @@ const elementsTemplate = document.querySelector("#elementsTemplate").content;
 const elementsContainer = document.querySelector(".elements__list");
 const cardTitle = document.querySelector("#imageTitle");
 const cardLink = document.querySelector("#imageLink");
-const popups = document.querySelectorAll(".popup");
-const elementsAddButton = elementsPopup.querySelector("#addButton");
-const deletePopup = document.querySelector("#deletePopup");
-const deletePopupButton = document.querySelector("deletePopupButton");
-const profileSaveButton = document.querySelector("#profileSaveButton");
+const elementsCloseButton = elementsPopup.querySelector("#elementsClose")
 
 const validationOptions = {
   formItem: ".popup__form",
@@ -39,19 +28,32 @@ const validationOptions = {
   inputErrorClass: "popup__item-error",
   errorClass: "popup__input-error",
 };
-const apiConfig = {
-  apiUrl: "https://nomoreparties.co/v1/plus-cohort-9/",
-  headers: {
-    authorization: "3f443b98-feb1-41de-bdf1-464c3491594e",
-    "Content-Type": "application/json",
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
-};
-const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-  return Promise.reject(`Ой, что-то пошло не так: ${res.status}`);
-};
+];
 export {
   profilePopup,
   elementsPopup,
@@ -70,20 +72,9 @@ export {
   elementsContainer,
   cardLink,
   cardTitle,
-  popups,
   validationOptions,
-  apiConfig,
-  checkResponse,
-  elementsImage,
   imageCloseButton,
-  elementsAddButton,
-  deletePopupButton,
-  deletePopup,
-  profileSaveButton,
-  profileAvatar,
-  profileAvatarButton,
-  avatarPopup,
-  avatarSaveButton,
-  avatarLink,
-  avatarForm,
+  initialCards,
+  profileCloseButton,
+  elementsCloseButton
 };
