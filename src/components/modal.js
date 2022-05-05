@@ -5,10 +5,9 @@
   }
 };
 function closeOverlayClick(evt) {
-  const openedPopup = document.querySelector('.popup_opened'); //без поиска ничего не работает
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(openedPopup)
-  }
+  if (evt.target.classList.contains('popup')) { 
+    closePopup(evt.target) 
+  } 
 }
  function openPopup(popupId) {
   popupId.classList.add('popup_opened');
