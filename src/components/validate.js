@@ -1,7 +1,7 @@
 const showInputError = (formItem, inputItem, errorMessage, options) => {
   const errorElement = formItem.querySelector(`#${inputItem.id}-error`);
   inputItem.classList.add(options.inputErrorClass);
-  errorElement.classList.add(options.errorMessageClass);
+  errorElement.classList.add(options.errorClass);
   errorElement.textContent = errorMessage;
 };
 const hideInputError = (formItem, inputItem, options) => {
@@ -12,7 +12,7 @@ const hideInputError = (formItem, inputItem, options) => {
 };
 const checkInputValidity = (formItem, inputItem, options) => {
   if (!inputItem.validity.valid) {
-    showInputError(formItem, inputItem, inputItem.validationtext, options);
+    showInputError(formItem, inputItem, inputItem.validationMessage, options);
   } else {
     hideInputError(formItem, inputItem, options);
   }
@@ -22,23 +22,23 @@ const invalidInput = (inputs) => {
     return !inputElement.validity.valid;
   });
 };
-const toggleButtonState = (inputs, buttons, options) => {
+const toggleButtonState = (inputs, buttonClass, options) => {
   if (invalidInput(inputs)) {
-    buttons.disabled = true;
-    buttons.classList.add(options.inactives);
+    buttonClass.disabled = true;
+    buttonClass.classList.add(options.inactiveButtonClass);
   } else {
-    buttons.disabled = false;
-    buttons.classList.remove(options.inactiveButtons);
+    buttonClass.disabled = false;
+    buttonClass.classList.remove(options.inactiveButtonClass);
   }
 };
 const setEventListeners = (formItem, options) => {
   const inputs = Array.from(formItem.querySelectorAll(options.inputItem));
-  const buttons = formItem.querySelector(options.buttons);
-  toggleButtonState(inputs, buttons, options);
+  const buttonClass = formItem.querySelector(options.buttons);
+  toggleButtonState(inputs, buttonClass, options);
   inputs.forEach((inputItem) => {
     inputItem.addEventListener("keyup", function () {
       checkInputValidity(formItem, inputItem, options);
-      toggleButtonState(inputs, buttons, options);
+      toggleButtonState(inputs, buttonClass, options);
     });
   });
 };

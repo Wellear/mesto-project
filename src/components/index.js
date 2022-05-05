@@ -1,6 +1,12 @@
-import "../../pages/index.css";
+import "../pages/index.css";
 import { createCard, newCard, submitCardForm, deleteCardAccept } from "./card";
-import { openPopup, closePopup } from "./modal";
+import {
+  openPopup,
+  closePopup,
+  updateProfile,
+  submitProfileForm,
+  submitProfileAvatar,
+} from "./modal";
 import { enableValidation } from "./validate";
 import {
   profilePopup,
@@ -10,6 +16,9 @@ import {
   profileForm,
   validationOptions,
   popups,
+  profileAvatarButton,
+  avatarPopup,
+  avatarForm,
 } from "./consts";
 import { getProfileData, getCadrsData } from "./api";
 
@@ -35,25 +44,17 @@ popups.forEach((popup) => {
 deletePopupButton.addEventListener("click", deleteCardAccept);
 
 profileEditButton.addEventListener("click", function () {
-  fillProfileInputs();
   openPopup(profilePopup);
 });
+profileAvatarButton.addEventListener("click", function () {
+  openPopup(avatarPopup);
+});
 elementsEditButton.addEventListener("click", function () {
   openPopup(elementsPopup);
 });
-
-elementsEditButton.addEventListener("click", function () {
-  openPopup(elementsPopup);
-});
+avatarForm.addEventListener("submit", submitProfileAvatar);
 profileForm.addEventListener("submit", submitProfileForm);
 elementsPopup.addEventListener("submit", submitCardForm);
 
-function clearForm(formId) {
-  formId.reset();
-}
-function disableButton(element) {
-  element.classList.add("popup__button_inactive");
-  element.disabled = true;
-}
 enableValidation(validationOptions);
-export { clearForm, disableButton };
+export let user;

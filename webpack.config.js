@@ -15,7 +15,10 @@ module.exports = {
         
     },
 devServer:{
-    port: 4200
+  static: path.resolve(__dirname, './dist'),
+  open: true,
+  compress: true,
+    port: 6060
 },
 plugins:[
 new HtmlWebpackPlugin({
