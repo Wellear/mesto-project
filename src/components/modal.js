@@ -5,8 +5,8 @@
   }
 };
 function closeOverlayClick(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
-  {
+  const openedPopup = document.querySelector('.popup_opened'); //без поиска ничего не работает
+  if (evt.target.classList.contains('popup_opened')) {
     closePopup(openedPopup)
   }
 }
