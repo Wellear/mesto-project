@@ -4,6 +4,7 @@
     closePopup(openedPopup)
   }
 };
+
 function closeOverlayClick(evt) {
   if (evt.target.classList.contains('popup')) { 
     closePopup(evt.target) 
