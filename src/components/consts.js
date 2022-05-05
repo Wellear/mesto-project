@@ -19,6 +19,7 @@ const elementsContainer = document.querySelector(".elements__list");
 const cardTitle = document.querySelector("#imageTitle");
 const cardLink = document.querySelector("#imageLink");
 const elementsCloseButton = elementsPopup.querySelector("#elementsClose")
+const elementsAddButton = elementsPopup.querySelector('#addButton')
 
 const validationOptions = {
   formItem: ".popup__form",
@@ -76,5 +77,6 @@ export {
   imageCloseButton,
   initialCards,
   profileCloseButton,
-  elementsCloseButton
+  elementsCloseButton,
+  elementsAddButton
 };

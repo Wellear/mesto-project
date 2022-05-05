@@ -17,8 +17,14 @@ import {
   elementsContainer,
   cardTitle,
   cardLink,
+  elementsAddButton,
 } from "./consts";
-import { submitProfileForm, actualizationForm, clearForm } from "./utils";
+import {
+  submitProfileForm,
+  actualizationForm,
+  clearForm,
+  disableButton,
+} from "./utils";
 
 profileEditButton.addEventListener("click", function () {
   actualizationForm();
@@ -53,6 +59,7 @@ elementsPopup.addEventListener("submit", function (evt) {
   clearForm(elementsForm);
 
   closePopup(elementsPopup);
+  disableButton(elementsAddButton);
 });
 
 enableValidation(validationOptions);

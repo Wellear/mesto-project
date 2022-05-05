@@ -1,11 +1,10 @@
  function closeEsc(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup)
   }
 };
 function closeOverlayClick(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup')) {
     closePopup(openedPopup)
   }
