@@ -6,6 +6,7 @@ import {
   updateProfile,
   submitProfileForm,
   submitProfileAvatar,
+  fillProfileInputs,
 } from "./modal";
 import { enableValidation } from "./validate";
 import {
@@ -44,6 +45,7 @@ popups.forEach((popup) => {
 deletePopupButton.addEventListener("click", deleteCardAccept);
 
 profileEditButton.addEventListener("click", function () {
+  fillProfileInputs();
   openPopup(profilePopup);
 });
 profileAvatarButton.addEventListener("click", function () {

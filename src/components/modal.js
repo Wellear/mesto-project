@@ -68,7 +68,10 @@ function closePopup(popupId) {
   popupId.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeEsc);
 }
-
+function fillProfileInputs() {
+  nameInput.value = profileTitle.textContent;
+  aboutInput.value = profileAbout.textContent;
+}
 export {
   openPopup,
   closePopup,
@@ -76,4 +79,5 @@ export {
   submitProfileForm,
   closeEsc,
   submitProfileAvatar,
+  fillProfileInputs,
 };
